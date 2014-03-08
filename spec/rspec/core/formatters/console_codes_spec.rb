@@ -4,6 +4,10 @@ require 'rspec/core/formatters/console_codes'
 RSpec.describe "RSpec::Core::Formatters::ConsoleCodes" do
   let(:console_codes) { RSpec::Core::Formatters::ConsoleCodes }
 
+  before do
+    allow(RSpec.configuration).to receive(:color_enabled?) { true }
+  end
+
   describe "#wrap" do
     it "accepts a VT100 integer code and formats the text with it" do
        expect(console_codes.wrap('abc', 32)).to eq "\e[32mabc\e[0m"

@@ -133,11 +133,11 @@ module RSpec
       protected
 
         def bold(text)
-          color_enabled? ? ConsoleCodes.wrap(text, :bold) : text
+          ConsoleCodes.wrap(text, :bold)
         end
 
         def color(text, color_code)
-          color_enabled? ? ConsoleCodes.wrap(text, color_code) : text
+          ConsoleCodes.wrap(text, color_code)
         end
 
         def failure_color(text)
