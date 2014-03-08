@@ -1,8 +1,8 @@
 require 'spec_helper'
-require 'rspec/core/formatters/console_colors'
+require 'rspec/core/formatters/console_codes'
 
-RSpec.describe "RSpec::Core::Formatters::ConsoleColors" do
-  let(:helper) { RSpec::Core::Formatters::ConsoleColors }
+RSpec.describe "RSpec::Core::Formatters::ConsoleCodes" do
+  let(:helper) { RSpec::Core::Formatters::ConsoleCodes }
 
   describe "#colorize" do
     it "accepts a VT100 integer code and formats the text with it" do

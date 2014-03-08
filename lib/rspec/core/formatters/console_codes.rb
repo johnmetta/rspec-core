@@ -1,8 +1,8 @@
 module RSpec
   module Core
     module Formatters
-      module ConsoleColors
-        VT100_COLORS =
+      module ConsoleCodes
+        VT100_CODES =
           {
             :black   => 30,
             :red     => 31,
@@ -11,24 +11,25 @@ module RSpec
             :blue    => 34,
             :magenta => 35,
             :cyan    => 36,
-            :white   => 37
+            :white   => 37,
+            :bold    => 1,
           }
-        VT100_COLOR_CODES = VT100_COLORS.values
+        VT100_CODE_VALUES = VT100_CODES.values
 
         module_function
 
-        def color_code_for(code_or_symbol)
-          if VT100_COLOR_CODES.include?(code_or_symbol)
+        def console_code_for(code_or_symbol)
+          if VT100_CODE_VALUES.include?(code_or_symbol)
             code_or_symbol
           else
-            VT100_COLORS.fetch(code_or_symbol) do
-              color_code_for(:white)
+            VT100_CODES.fetch(code_or_symbol) do
+              code_for(:white)
             end
           end
         end
 
         def colorize(text, code_or_symbol)
-          "\e[#{color_code_for(code_or_symbol)}m#{text}\e[0m"
+          "\e[#{console_code_for(code_or_symbol)}m#{text}\e[0m"
         end
 
       end

@@ -137,7 +137,7 @@ module RSpec
         end
 
         def color(text, color_code)
-          color_enabled? ? ConsoleColors.colorize(text, color_code) : text
+          color_enabled? ? ConsoleCodes.colorize(text, color_code) : text
         end
 
         def failure_color(text)
