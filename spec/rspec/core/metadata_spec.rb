@@ -77,7 +77,7 @@ module RSpec
         end
 
         it "creates an empty execution result" do
-          expect(example_metadata).to have_value({}).for(:execution_result)
+          expect(example_metadata[:execution_result].to_h.values.uniq).to eq([nil])
         end
 
         it "extracts file path from caller" do
