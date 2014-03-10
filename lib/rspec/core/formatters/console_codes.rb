@@ -14,12 +14,12 @@ module RSpec
             :white   => 37,
             :bold    => 1,
           }
-        VT100_CODE_VALUES = VT100_CODES.values
+        VT100_CODE_VALUES = VT100_CODES.invert
 
         module_function
 
         def console_code_for(code_or_symbol)
-          if VT100_CODE_VALUES.include?(code_or_symbol)
+          if VT100_CODE_VALUES[code_or_symbol]
             code_or_symbol
           else
             VT100_CODES.fetch(code_or_symbol) do
