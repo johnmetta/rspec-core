@@ -9,20 +9,22 @@ RSpec.describe "RSpec::Core::Formatters::ConsoleCodes" do
   end
 
   describe "#wrap" do
-    it "accepts a VT100 integer code and formats the text with it" do
-       expect(console_codes.wrap('abc', 32)).to eq "\e[32mabc\e[0m"
+    context "when given a VT100 integer code" do
+      it "formats the text with it" do
+         expect(console_codes.wrap('abc', 32)).to eq "\e[32mabc\e[0m"
+      end
     end
 
-    it "accepts a symbol as a color parameter and translates it to the correct integer code, then formats the text with it" do
-       expect(console_codes.wrap('abc', :green)).to eq "\e[32mabc\e[0m"
+    context "when given a symbolic color name" do
+      it "translates it to the correct integer code and formats the text with it" do
+         expect(console_codes.wrap('abc', :green)).to eq "\e[32mabc\e[0m"
+      end
     end
 
-    it "accepts a non-default color symbol as a parameter and translates it to the correct integer code, then formats the text with it" do
-       expect(console_codes.wrap('abc', :cyan)).to eq "\e[36mabc\e[0m"
-    end
-
-    it "accepts :bold formats the text with it" do
-       expect(console_codes.wrap('abc', :bold)).to eq "\e[1mabc\e[0m"
+    context "when given :bold" do
+      it "formats the text as bold" do
+         expect(console_codes.wrap('abc', :bold)).to eq "\e[1mabc\e[0m"
+      end
     end
   end
 end
