@@ -23,7 +23,7 @@ module RSpec
             code_or_symbol
           else
             VT100_CODES.fetch(code_or_symbol) do
-              code_for(:white)
+              console_code_for(:white)
             end
           end
         end
